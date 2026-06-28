@@ -2,6 +2,9 @@
 
 YouTube の再生速度をワンクリック / ショートカットで切り替える Chrome 拡張機能 (Manifest V3)。
 
+![ポップアップ](docs/images/popup.png)
+
+
 ## インストール
 
 1. Chrome で `chrome://extensions` を開く
