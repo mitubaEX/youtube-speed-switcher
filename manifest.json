@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Speed Switcher",
+  "version": "0.1.0",
+  "description": "YouTube の再生速度をワンクリック / ショートカットで切り替え。音楽は等倍、動画は1.5倍などプリセット対応。",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Speed Switcher",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "permissions": ["storage", "activeTab"],
+  "commands": {
+    "speed-music": {
+      "suggested_key": { "default": "Alt+1", "mac": "Alt+1" },
+      "description": "1.0x (音楽)"
+    },
+    "speed-video": {
+      "suggested_key": { "default": "Alt+2", "mac": "Alt+2" },
+      "description": "1.5x (動画)"
+    },
+    "speed-fast": {
+      "description": "2.0x (倍速) — 手動割り当て"
+    },
+    "speed-up": {
+      "suggested_key": { "default": "Alt+Period", "mac": "Alt+Period" },
+      "description": "0.25x 速くする"
+    },
+    "speed-down": {
+      "suggested_key": { "default": "Alt+Comma", "mac": "Alt+Comma" },
+      "description": "0.25x 遅くする"
+    }
+  }
+}

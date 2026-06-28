@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Speed</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0;
+    padding: 14px;
+    width: 260px;
+    font: 13px -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #fff;
+    color: #222;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1f1f1f; color: #eee; }
+    .btn { background: #2c2c2c; color: #eee; border-color: #444; }
+    .btn:hover { background: #3a3a3a; }
+    .btn.active { background: #c00; border-color: #c00; color: #fff; }
+  }
+  h1 { font-size: 13px; margin: 0 0 8px; font-weight: 600; opacity: .7; }
+  .current {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 4px 0 4px;
+  }
+  .badge {
+    text-align: center;
+    font-size: 11px;
+    opacity: .7;
+    margin-bottom: 10px;
+    min-height: 14px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .btn {
+    appearance: none;
+    border: 1px solid #ddd;
+    background: #f7f7f7;
+    color: #222;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn:hover { background: #ececec; }
+  .btn.active { background: #c00; border-color: #c00; color: #fff; }
+  .hint {
+    margin-top: 12px;
+    font-size: 11px;
+    opacity: .65;
+    line-height: 1.5;
+  }
+  .hint code { background: rgba(127,127,127,.18); padding: 1px 4px; border-radius: 3px; }
+  .nope { text-align: center; padding: 24px 0; opacity: .6; }
+</style>
+</head>
+<body>
+<h1>再生速度</h1>
+<div id="current" class="current">—</div>
+<div id="badge" class="badge"></div>
+<div id="grid" class="grid"></div>
+<div class="hint">
+  最後に手動で設定した速度を次の動画にも適用します。<br>
+  以下は自動で <b>1.0x</b>:<br>
+  ・ライブ配信<br>
+  ・10 分以下の短尺動画 (音楽動画の想定)<br>
+  ・カテゴリが <b>Music</b> の動画<br>
+  ・<code>music.youtube.com</code><br>
+  ショートカット: <code>Alt+1</code>=1.0x / <code>Alt+2</code>=1.5x / <code>Alt+,</code> <code>Alt+.</code> で 0.25 刻み<br>
+  変更は <code>chrome://extensions/shortcuts</code> から
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
