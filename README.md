@@ -19,7 +19,7 @@ YouTube の再生速度をワンクリック / ショートカットで切り替
 
 以下のいずれかに該当する動画は自動で **1.0x** にリセット:
 
-- **ライブ配信** (`video.duration === Infinity` / `meta[itemprop="isLiveBroadcast"]="True"` / `.ytp-live` 要素)
+- **現在ライブ中の配信** (`video.duration === Infinity` のみで判定。アーカイブ済みのライブは finite になるので除外される)
 - **10 分以下の短尺動画** (音楽動画の代理判定。`video.duration ≤ 600s`)
 - **音楽カテゴリ** (`<meta itemprop="genre" content="Music">`)
 - **`music.youtube.com`**

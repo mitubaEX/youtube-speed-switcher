@@ -47,7 +47,7 @@ const renderNoYouTube = () => {
   const reason = res?.forceReason;
   $current.textContent = `${rate}x`;
   $badge.textContent =
-    reason === 'live' ? '🔴 ライブ配信 — 1.0x で自動再生'
+    reason === 'live' ? '🔴 ライブ配信中 — 1.0x で自動再生'
     : reason === 'music' ? '🎵 Music カテゴリ — 1.0x で自動再生'
     : reason === 'short' ? '⏱ 10分以下の短尺 — 1.0x で自動再生'
     : '';

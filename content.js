@@ -21,14 +21,11 @@
     return Number.isFinite(d) && d > 0 && d <= SHORT_VIDEO_SEC;
   };
 
+  // "現在ライブ中" のみ true。アーカイブは finite duration になるので除外される。
+  // meta[itemprop="isLiveBroadcast"] や .ytp-live はアーカイブにも残ることがあるため使わない。
   const isLiveVideo = () => {
     const v = getVideo();
-    if (v && v.duration === Infinity) return true;
-    const meta = document.querySelector('meta[itemprop="isLiveBroadcast"]')?.getAttribute('content');
-    if (meta && meta.trim().toLowerCase() === 'true') return true;
-    if (document.querySelector('.ytp-live-badge:not([disabled])')) return true;
-    if (document.querySelector('.ytp-live')) return true;
-    return false;
+    return !!(v && v.duration === Infinity);
   };
 
   // 等倍にしたい条件: ライブ / 音楽ホスト / 音楽カテゴリ / 短尺動画 (≤10分)
